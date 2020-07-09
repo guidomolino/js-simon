@@ -33,34 +33,43 @@ setTimeout(function () {
     var numUtente = prompt("Inserisci un numero rimanente tra i 5 che ti abbiamo dato:");
     arrayUtente.push(numUtente);
   }
-  
+
   console.log("utente: " + arrayUtente);
 
   // controllo l'uguaglianza tra gli array
   var arrayUguali = controlloArrayUguali(array, arrayUtente);
-  // condizione vittoria
-  if (arrayUguali == true) {
-    console.log("Hai vinto");
-  }else {
-    console.log("Hai perso");
+  var quantitaUguali = arrayUguali.length;
+
+  console.log(arrayUguali);
+
+  // condizioni vittoria
+  var quantitaNumeri = 5;
+
+  if (quantitaUguali == quantitaNumeri) {
+    console.log("Hai vinto, hai indovinato i seguenti numeri " + arrayUguali + " per un totale di " + quantitaUguali + " punti");
+  }else if (quantitaUguali < quantitaNumeri & quantitaUguali != 0) {
+    console.log("Quasi, hai indovinato i seguenti numeri " + arrayUguali + " per un totale di " + quantitaUguali + " punti");
   }
-},5000); //5s debug
+  else if (quantitaUguali == 0){
+    console.log("Hai perso, hai indovinato " + arrayUguali + " numeri");
+  }
+},5000); //30s
 
 
 
 // funzione per trovare array uguali
 function controlloArrayUguali(primoArray, secondoArray) {
   var i = 0;
-  var trovato = false;
+  var j = [];
 
-  while (i<primoArray.length && trovato == false) {
+  while (i<primoArray.length) {
     if (primoArray[i] == secondoArray[i]) {
-      trovato = true;
+      j.push(primoArray[i]);
     }
     i++
   }
 
-  return trovato;
+  return j;
 }
 
 // funzione per trovare i numeri già presenti all'interno dell'array specificato
