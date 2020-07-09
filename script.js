@@ -23,29 +23,45 @@ console.log("cpu: " + array);
 
 alert("Ecco i 5 numeri da memorizzare: "+ array);
 
-var time = setTimeout(function () {
-  var arrayUtente = [];
+// imposto il timer
+setTimeout(function () {
 
-  if (time == true) {
-    while (arrayUtente.length < array.length) {
-      var numUtente = prompt("Inserisci un numero rimanente tra i 5 che ti abbiamo dato:");
-      arrayUtente.push(numUtente);
-    }
+  var arrayUtente = [];
+  // quando il timer finisce chiedo l'arrayUtente
+
+  while (arrayUtente.length < array.length) {
+    var numUtente = prompt("Inserisci un numero rimanente tra i 5 che ti abbiamo dato:");
+    arrayUtente.push(numUtente);
+  }
+  
+  console.log("utente: " + arrayUtente);
+
+  // controllo l'uguaglianza tra gli array
+  var arrayUguali = controlloArrayUguali(array, arrayUtente);
+  // condizione vittoria
+  if (arrayUguali == true) {
+    console.log("Hai vinto");
+  }else {
+    console.log("Hai perso");
   }
 },5000); //5s debug
 
 
-console.log("utente: " + arrayUtente);
 
+// funzione per trovare array uguali
+function controlloArrayUguali(primoArray, secondoArray) {
+  var i = 0;
+  var trovato = false;
 
+  while (i<primoArray.length && trovato == false) {
+    if (primoArray[i] == secondoArray[i]) {
+      trovato = true;
+    }
+    i++
+  }
 
-
-
-
-
-
-
-
+  return trovato;
+}
 
 // funzione per trovare i numeri già presenti all'interno dell'array specificato
 function giaPresente(array, elemento) {
